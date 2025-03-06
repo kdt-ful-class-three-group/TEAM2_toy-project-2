@@ -4,11 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>글쓰기</title>
+<style>
+
+.display-none {
+  display: none;
+}
+
+</style>
+
 </head>
 <body>
   <h1>📜글쓰기</h1>
   <button id="writeBtn">글쓰기</button>
-  <form action="">
+  <form action="" class="display-none">
       <input type="text" id="title" placeholder="제목">
       <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
       <button type="submit" id="saveButton">작성 완료</button>

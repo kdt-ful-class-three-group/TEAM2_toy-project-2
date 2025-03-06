@@ -15,6 +15,12 @@ texterea.addEventListener("input", function(){
   }, 5000);
 });
 
-// 
+// 글쓰기 버튼 클릭 시 input 생성
+const writeBtn = document.getElementById("writeBtn")
+writeBtn.addEventListener('click', function() {
+  const form = document.getElementsByTagName('form')[0]
+  form.classList.toggle("display-none")
+})
+
 
 

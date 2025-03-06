@@ -15,5 +15,8 @@
     "url": "https://github.com/kdt-ful-class-three-group/TEAM2_toy-project-2/issues"
   },
   "homepage": "https://github.com/kdt-ful-class-three-group/TEAM2_toy-project-2#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
 }

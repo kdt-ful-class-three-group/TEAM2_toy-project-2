@@ -15,11 +15,7 @@ app.get('/', function(req,res) {
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
 
-
-
 })
-
-
 
 app.listen(PORT, function() {
     console.log("http://localhost:3002/")

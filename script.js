@@ -1,5 +1,6 @@
 
 const texterea = document.getElementById("content");
+const port = 3000
 
 let timeToSave;
 
@@ -22,5 +23,20 @@ writeBtn.addEventListener('click', function() {
   form.classList.toggle("display-none")
 })
 
+// json파일불러오기
+let datalist = null
+fetch('./dataprac.json')
+.then(response => response.json())
+.then(data =>  {
 
+  data.forEach(i => {
+    // div만들기
+    let div = document.createElement("div")
+    div.textContent = i.title
+    document.getElementById('listDiv').appendChild(div)
+    
+  })
+  
+  console.log(data)
+})
 

@@ -51,7 +51,6 @@ fetch("/data")
           readModal(i.title, i.content)
         })
         document.getElementById('listDiv').appendChild(div)
-
       })
 
       console.log(data)

@@ -1,4 +1,5 @@
-const fs = require('fs')
+// const fs = require('fs')
+import fs from 'fs'
 
 let data = fs.readFileSync("data.json").toString()
 
@@ -25,3 +26,9 @@ let show = Math.ceil(currentPage / 5)
 // [ ] 첫번째 페이지 번호
 
 // [ ] 마지막 페이지 번호
+
+
+
+
+
+

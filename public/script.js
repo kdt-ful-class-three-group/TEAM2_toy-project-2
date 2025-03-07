@@ -37,6 +37,12 @@ writeBtn.addEventListener('click', function() {
 // json파일불러오기
 
 let datalist = null
+
+let listNumber = 5;
+
+//listNumber에 맞춰 div 만들기
+
+
 fetch("/data")
     .then(response => response.json())
     .then(data =>  {
@@ -47,21 +53,37 @@ fetch("/data")
         let numberBtn = document.createElement('button');
         numberBtn.innerText= `${i+1}`
         document.getElementById('btns').appendChild(numberBtn)
+
+        //클릭이벤트
+        numberBtn.addEventListener('click',()=>{
+          console.log(numberBtn.innerText)
+
+          for(let j= i*5 ; j< i*5 + 5 ; j++){
+            let listDiv = document.createElement('div')
+            listDiv.textContent = data[j].title;
+            document.getElementById('listDiv').appendChild(listDiv)
+          }
+        })
       }
 
       //버튼 누르면 목록 바뀜
+      //div도 5개 > 0-4 / 5-9 / ...
+      //5개의 div중 맨 윗 번호 : ( (페이지번호-1) * 5 )
+      //5개의 div중 마지막 번호 : (페이지번호*5) -1
 
-      data.forEach(i => {
-        // div만들기
-        let div = document.createElement("div")
-        div.textContent = i.title;
-        div.setAttribute("style", "cursor:pointer");
-        div.addEventListener("click", function() {
-          readModal(i.title, i.content)
-        })
-        document.getElementById('listDiv').appendChild(div)
 
-      })
+
+      // data.forEach(i => {
+      //   // div만들기
+      //   let div = document.createElement("div")
+      //   div.textContent = i.title;
+      //   div.setAttribute("style", "cursor:pointer");
+      //   div.addEventListener("click", function() {
+      //     readModal(i.title, i.content)
+      //   })
+      //   document.getElementById('listDiv').appendChild(div)
+
+      // })
 
       console.log(data)
     })

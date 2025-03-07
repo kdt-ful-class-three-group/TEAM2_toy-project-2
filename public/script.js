@@ -16,8 +16,7 @@ texterea.addEventListener("input", function(){
   // 입력중일때 p태그에 display-none class 추가(입력중일 때 p태그 안 보임)
   pText.classList.add("display-none")
 
-
-
+  //5초동안 반응 없을 때 로직
   timeToSave = setTimeout(() => {
     console.log("저장해야합니다. 5초 지났습니다.");
     localStorage.setItem("content", content);
@@ -42,6 +41,18 @@ fetch("/data")
     .then(response => response.json())
     .then(data =>  {
 
+      // 5개씩 보일 때 페이지 개수
+      let all = Math.ceil(data.lenght/5)
+      for(let i =0; i<all ; i++){
+        let numberBtn = document.createElement('button')
+        numberBtn.innerText = `${i + 1}`
+        document.getElementById('btns').appendChild(numberBtn)
+      }
+
+
+      // 버튼 누르면 목록 바뀜
+
+
       data.forEach(i => {
         // div만들기
         let div = document.createElement("div")
@@ -63,12 +74,7 @@ fetch("/data")
 // modal elements script 작성 영역
 
 
-
-
-
 // 상세보기 모달창, titile, content를 가져오기 위함
-
-
 function readModal(title, content) {
     const modal = document.getElementById("readModal");
     const modalContent = modal.querySelector("div");

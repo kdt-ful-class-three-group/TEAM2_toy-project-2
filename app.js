@@ -56,14 +56,6 @@ app.post("/write", function(req,res) {
 
     res.redirect("/")
 
-    //json파일이 없으면 [] 넣어서 생성하기
-
-    //json파일 데이터 가져오기
-
-    //입력 데이터 가져오기
-
-    //json파일에 데이터 추가하기
-
 })
 
 app.listen(PORT, function() {

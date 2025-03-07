@@ -41,6 +41,16 @@ fetch("/data")
     .then(response => response.json())
     .then(data =>  {
 
+      //5개씩 목록이 보일때 페이지 개수 + 버튼 생성
+      let all = Math.ceil(data.length / 5)
+      for(let i=0; i<all; i++){
+        let numberBtn = document.createElement('button');
+        numberBtn.innerText= `${i+1}`
+        document.getElementById('btns').appendChild(numberBtn)
+      }
+
+      //버튼 누르면 목록 바뀜
+
       data.forEach(i => {
         // div만들기
         let div = document.createElement("div")

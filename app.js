@@ -8,7 +8,9 @@ const fs = require('fs');
 
 app.use(express.static("public"))
 app.use(express.json());
-let jsonData = "/dataprac.json"
+
+// let jsonData = "/dataprac.json"
+// console.log(jsonData) // '/dataprac.json' 문자열 나옴
 
 
 app.get('/', function(req,res) {
@@ -30,9 +32,21 @@ app.get('/dataprac', function(req,res) {
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
     const data = req.body;
+    console.log(data) // {} 빈 객체 나옴
 
+    console.log(req.body) // {} 빈 객체 나옴 
 
-    jsonData.push(data)
+    //입력 데이터 확인하기
+
+    //json파일이 없으면 [] 넣어서 생성하기
+
+    //json파일 데이터 가져오기
+
+    //입력 데이터 가져오기
+
+    //json파일에 데이터 추가하기
+
+    // jsonData.push(data)
     res.redirect("/")
 
 
@@ -48,13 +62,6 @@ app.post("/write", function(req,res) {
     //
 
 
-    //json파일이 없으면 [] 넣어서 생성하기
-
-    //json파일 데이터 가져오기
-
-    //입력 데이터 가져오기
-
-    //json파일에 데이터 추가하기
 
 })
 

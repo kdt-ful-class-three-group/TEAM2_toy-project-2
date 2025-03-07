@@ -38,7 +38,7 @@ writeBtn.addEventListener('click', function() {
 // json파일불러오기
 
 let datalist = null
-fetch("/dataprac")
+fetch("/data")
     .then(response => response.json())
     .then(data =>  {
 

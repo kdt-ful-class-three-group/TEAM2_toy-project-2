@@ -21,8 +21,8 @@ app.use(express.json());
 //json파일이 없으면 [] 넣어서 생성하기
 //? html과 연결된 script.js에서 fetch로 json파일을 받음
 //? json파일의 유무를 / 경로에서 수행해야하지 않을까?
-if(!fs.existsSync(path.join(__dirname, "dataprac.json"))) {
-    fs.writeFileSync(path.join(__dirname, "dataprac.json"), "[]")
+if(!fs.existsSync(path.join(__dirname, "data.json"))) {
+    fs.writeFileSync(path.join(__dirname, "data.json"), "[]")
 }
 
 app.get('/', function(req,res) {
@@ -30,8 +30,8 @@ app.get('/', function(req,res) {
 })
 
 
-app.get('/dataprac', function(req,res) {
-    res.sendFile(path.join(__dirname, "dataprac.json"))
+app.get('/data', function(req,res) {
+    res.sendFile(path.join(__dirname, "data.json"))
 })
 
 app.post("/write", function(req,res) {
@@ -41,7 +41,7 @@ app.post("/write", function(req,res) {
 
     //json파일 데이터 가져오기
     //readFileSync로 파일을 읽음 : Buffer로 나오는 값을 toString으로 문자열로 변환
-    let jsonData = fs.readFileSync(path.join(__dirname, "dataprac.json")).toString()
+    let jsonData = fs.readFileSync(path.join(__dirname, "data.json")).toString()
     //JSON문자열을 객체(배열)로 변환
     let jsonArr = JSON.parse(jsonData)
 
@@ -52,7 +52,7 @@ app.post("/write", function(req,res) {
     jsonArr.push(data)
 
     //json파일에 데이터 저장하기
-    fs.writeFileSync(path.join(__dirname, "dataprac.json"), JSON.stringify(jsonArr))
+    fs.writeFileSync(path.join(__dirname, "data.json"), JSON.stringify(jsonArr))
 
     res.redirect("/")
 

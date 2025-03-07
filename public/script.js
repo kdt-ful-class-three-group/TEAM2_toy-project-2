@@ -58,5 +58,10 @@ fetch("/dataprac")
   console.log(data)
 })
 
+// 작성완료 버튼을 누르면 "저장되었습니다." alert 생성
+const saveButton = document.getElementById('saveButton')
+saveButton.addEventListener('click', function(){
+  alert("저장되었습니다.") 
 
+})
 

@@ -20,6 +20,13 @@ app.use(express.json());
 
 //이 두가지 미들웨어를 사용하면 body를 파싱함
 
+//? html과 연결된 script.js에서 fetch로 json파일을 받음
+//? json파일의 유무를 / 경로에서 수행해야하지 않을까?
+
+if(!fs.existsSync(path.join(__dirname, "dataprac.json"))) {
+    fs.writeFileSync(path.join(__dirname, "dataprac.json"), "[]")
+}
+
 app.get('/', function(req,res) {
     res.sendFile(path.join(__dirname,  "index.html"))
 })
@@ -35,12 +42,9 @@ app.get('/dataprac', function(req,res) {
 
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
-    // const data = req.body;
-    // console.log(data) // {} 빈 객체 나옴
-
-    console.log(req.body) // {} 빈 객체 나옴 
-
     //입력 데이터 확인하기
+    const data = req.body;
+    console.log(data)
 
     //json파일이 없으면 [] 넣어서 생성하기
 

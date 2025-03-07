@@ -37,9 +37,6 @@ app.post("/write", function(req,res) {
 
 
 
-
-
-
     // const body = req.body;
     //
     // fs.readFile(path.join(__dirname, 'dataprac.json'))

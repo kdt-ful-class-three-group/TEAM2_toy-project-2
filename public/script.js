@@ -2,6 +2,7 @@
 const texterea = document.getElementById("content");
 const port = 3000
 
+
 let timeToSave;
 // p태그를 가져옴
 let pText = document.getElementById('saveText')
@@ -33,9 +34,10 @@ writeBtn.addEventListener('click', function() {
   form.classList.toggle("display-none")
 })
 
+
 // json파일불러오기
 let datalist = null
-fetch('./dataprac.json')
+fetch("/dataprac")
 .then(response => response.json())
 .then(data =>  {
 
@@ -43,6 +45,7 @@ fetch('./dataprac.json')
     // div만들기
     let div = document.createElement("div")
     div.textContent = i.title
+    div.setAttribute("style", "cursor:pointer")
     document.getElementById('listDiv').appendChild(div)
     
   })

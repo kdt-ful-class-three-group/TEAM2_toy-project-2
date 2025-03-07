@@ -7,11 +7,18 @@ const fs = require('fs');
 
 
 app.use(express.static("public"))
+
+//express는 POST요청의 body(요청)을 파싱하지 않음
+
+// URL 인코딩된 본문 데이터를 파싱함
+//extend:false => querystring 라이브러리를 사용해서 간단한 문자열, 배열형태의 데이터만 파싱
+//extend:true => qs 라이브러리를 사용해서 복잡한 객체형태의 데이터도 파싱
+app.use(express.urlencoded({extended: false}));
+
+//JSON 형태의 본문 데이터를 파싱함
 app.use(express.json());
 
-// let jsonData = "/dataprac.json"
-// console.log(jsonData) // '/dataprac.json' 문자열 나옴
-
+//이 두가지 미들웨어를 사용하면 body를 파싱함
 
 app.get('/', function(req,res) {
     res.sendFile(path.join(__dirname,  "index.html"))
@@ -25,7 +32,6 @@ app.get('/dataprac', function(req,res) {
 
 
 })
-
 
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")

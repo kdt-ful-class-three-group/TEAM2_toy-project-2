@@ -40,14 +40,22 @@ fetch("/data")
   let listNumber = 5;
 
   //listNumber에 맞춰 div 만들기
+  //만든 div에 modal과 관련한 내용 추가
+  //cursor, click했을 때 readModal 실행
   for(let i =0; i<listNumber; i++){
     let makeList = document.createElement('div')
     document.getElementById('listDiv').appendChild(makeList)
     makeList.innerText = data[i].title
+    makeList.setAttribute("style", "cursor:pointer");
+    makeList.addEventListener('click',()=>{
+      readModal(data[i].title,data[i].content)
+    })
   }
   
   //5개씩 목록이 보일때 페이지 개수 + 버튼 생성
   let all = Math.ceil(data.length / listNumber)
+  
+  //페이지 개수에 따른 button 생성
   for(let i=0; i<all; i++){
     let numberBtn = document.createElement('button');
     numberBtn.innerText= `${i+1}`
@@ -55,34 +63,29 @@ fetch("/data")
 
     //클릭이벤트
     numberBtn.addEventListener('click',()=>{
-      console.log('버튼이다',numberBtn.innerText)
-      for(let j= i*5 ; j< i*5 + 5 ; j++){
-        console.log(j)
-        // listDiv.textContent = data[j].title;
-        // document.getElementById('listDiv').appendChild(listDiv)
+      //목록에 해당하는 div 가져옴
+      let makeList = document.querySelectorAll('#listDiv > div')
+      //버튼에 따라 보이는 정보 달라짐
+      for(let k=0; k<listNumber; k++){
+        //    k= 0 1 2 3 4
+        //i=0    0 1 2 3 4
+        //i=1    5 6 7 8 9
+        //i=2   10 11 12 13 14 ...
+        makeList[k].textContent = ''
+        if(data[k+listNumber*i]!==undefined){
+          makeList[k].innerText= data[k+listNumber*i].title
+          
+        }
+        //변경된 내용에 맞춰 modal이 나오도록 내용 추가
+        //cursor, click했을 때 readModal 실행
+        makeList[k].setAttribute("style", "cursor:pointer");
+        makeList[k].addEventListener('click',()=>{
+          readModal(data[k+listNumber*i].title, data[k+listNumber*i].content)
+        })
       }
     })
   }
-
-      //버튼 누르면 목록 바뀜
-      //div도 5개 > 0-4 / 5-9 / ...
-      //5개의 div중 맨 윗 번호 : ( (페이지번호-1) * 5 )
-      //5개의 div중 마지막 번호 : (페이지번호*5) -1
-
-
-
-      // data.forEach(i => {
-      //   // div만들기
-      //   let div = document.createElement("div")
-      //   div.textContent = i.title;
-      //   div.setAttribute("style", "cursor:pointer");
-      //   div.addEventListener("click", function() {
-      //     readModal(i.title, i.content)
-      //   })
-      //   document.getElementById('listDiv').appendChild(div)
-
-      // })
-
+      //입력한 데이터 확인
       console.log(data)
     })
 

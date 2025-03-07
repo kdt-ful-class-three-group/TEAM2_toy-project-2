@@ -2,7 +2,6 @@
 const texterea = document.getElementById("content");
 const port = 3000
 
-
 let timeToSave;
 // p태그를 가져옴
 let pText = document.getElementById('saveText')
@@ -49,7 +48,11 @@ fetch("/dataprac")
     document.getElementById('listDiv').appendChild(div)
     
   })
-  
-  console.log(data)
+})
+
+// 작성완료 버튼을 누르면 "저장되었습니다." alert 생성
+const saveButton = document.getElementById('saveButton')
+saveButton.addEventListener('click', function(){
+  alert("저장되었습니다.") 
 })
 

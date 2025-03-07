@@ -41,6 +41,8 @@ fetch('./dataprac.json')
 
   data.forEach(i => {
     // div만들기
+    // 글을 작성하면 div를 만들어서 그 div에 작성한title만 보이게끔
+    // texterea 밑에 div로 list 생성
     let div = document.createElement("div")
     div.textContent = i.title
     document.getElementById('listDiv').appendChild(div)

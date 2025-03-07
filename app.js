@@ -27,12 +27,10 @@ app.get('/dataprac', function(req,res) {
 })
 
 
-
-
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
-    const data = req.body;
-    console.log(data) // {} 빈 객체 나옴
+    // const data = req.body;
+    // console.log(data) // {} 빈 객체 나옴
 
     console.log(req.body) // {} 빈 객체 나옴 
 

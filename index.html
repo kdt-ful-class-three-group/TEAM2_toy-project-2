@@ -16,7 +16,7 @@
 <body>
   <h1>📜글쓰기</h1>
   <button id="writeBtn">글쓰기</button>
-  <form action="/write" method="post" class="display-none">
+  <form action="/write" method="post" class="display-none" enctype="application/x-www-form-urlencoded">
       <input type="text" id="title" placeholder="제목">
       <textarea id="content" placeholder="내용을 입력해주세요"></textarea>
       <p id="saveText">임시저장 됐습니다.</p>

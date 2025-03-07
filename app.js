@@ -15,6 +15,14 @@ app.get('/', function(req,res) {
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
 
+    //json파일이 없으면 [] 넣어서 생성하기
+
+    //json파일 데이터 가져오기
+
+    //입력 데이터 가져오기
+
+    //json파일에 데이터 추가하기
+
 })
 
 app.listen(PORT, function() {

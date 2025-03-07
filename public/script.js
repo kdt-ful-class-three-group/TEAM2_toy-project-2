@@ -93,3 +93,7 @@ function closeModal() {
 }
 window.readModal = readModal;
 window.closeModal = closeModal;
+
+document.getElementById("saveButton").addEventListener('click', function() {
+  alert("저장되었습니다.")
+})

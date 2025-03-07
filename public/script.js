@@ -37,3 +37,59 @@ writeBtn.addEventListener('click', function() {
 
 // json파일불러오기
 
+let datalist = null
+fetch("/dataprac")
+    .then(response => response.json())
+    .then(data =>  {
+
+      data.forEach(i => {
+        // div만들기
+        let div = document.createElement("div")
+        div.textContent = i.title;
+        div.setAttribute("style", "cursor:pointer");
+        div.addEventListener("click", function() {
+          readModal(i.title, i.content)
+        })
+        document.getElementById('listDiv').appendChild(div)
+
+      })
+
+      console.log(data)
+    })
+
+
+
+
+
+// modal elements script 작성 영역
+
+
+
+
+
+// 상세보기 모달창, titile, content를 가져오기 위함
+
+
+function readModal(title, content) {
+    const modal = document.getElementById("readModal");
+    const modalContent = modal.querySelector("div");
+
+    modalContent.innerHTML = `
+    <h2>${title}</h2>
+    <p>${content}</p>
+  `;
+
+    modal.style.display = "block";
+}
+
+// 닫기 버튼 클릭 시 modal 닫기
+function closeModal() {
+    const readModal = document.getElementById("readModal");
+
+    if (readModal) {
+        readModal.style.display = "none";
+    }
+
+}
+window.readModal = readModal;
+window.closeModal = closeModal;

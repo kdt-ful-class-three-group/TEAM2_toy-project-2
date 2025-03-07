@@ -79,7 +79,7 @@ fetch("/data")
         }
         //변경된 내용에 맞춰 modal이 나오도록 내용 추가
         //cursor, click했을 때 readModal 실행
-        makeList[k].setAttribute("style", "cursor:pointer");
+        makeList[k].setAttribute("style", "cursor:url('./pooh.png') 2 2,auto");
         makeList[k].addEventListener('click',()=>{
           readModal(data[k+listNumber*i].title, data[k+listNumber*i].content)
         })

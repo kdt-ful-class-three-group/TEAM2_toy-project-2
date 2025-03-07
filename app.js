@@ -34,6 +34,10 @@ app.get('/data', function(req,res) {
     res.sendFile(path.join(__dirname, "data.json"))
 })
 
+app.get('/pooh.png',function(req,res){
+    res.sendFile(path.join(__dirname,"pooh.png"))
+})
+
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
     //입력 데이터 확인하기

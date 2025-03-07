@@ -33,38 +33,36 @@ writeBtn.addEventListener('click', function() {
   form.classList.toggle("display-none")
 })
 
-
-// json파일불러오기
-
-let datalist = null
-
-let listNumber = 5;
-
-//listNumber에 맞춰 div 만들기
-
-
 fetch("/data")
-    .then(response => response.json())
-    .then(data =>  {
+.then(response => response.json())
+.then(data =>  {
 
-      //5개씩 목록이 보일때 페이지 개수 + 버튼 생성
-      let all = Math.ceil(data.length / 5)
-      for(let i=0; i<all; i++){
-        let numberBtn = document.createElement('button');
-        numberBtn.innerText= `${i+1}`
-        document.getElementById('btns').appendChild(numberBtn)
+  let listNumber = 5;
 
-        //클릭이벤트
-        numberBtn.addEventListener('click',()=>{
-          console.log(numberBtn.innerText)
+  //listNumber에 맞춰 div 만들기
+  for(let i =0; i<listNumber; i++){
+    let makeList = document.createElement('div')
+    document.getElementById('listDiv').appendChild(makeList)
+    makeList.innerText = data[i].title
+  }
+  
+  //5개씩 목록이 보일때 페이지 개수 + 버튼 생성
+  let all = Math.ceil(data.length / listNumber)
+  for(let i=0; i<all; i++){
+    let numberBtn = document.createElement('button');
+    numberBtn.innerText= `${i+1}`
+    document.getElementById('btns').appendChild(numberBtn)
 
-          for(let j= i*5 ; j< i*5 + 5 ; j++){
-            let listDiv = document.createElement('div')
-            listDiv.textContent = data[j].title;
-            document.getElementById('listDiv').appendChild(listDiv)
-          }
-        })
+    //클릭이벤트
+    numberBtn.addEventListener('click',()=>{
+      console.log('버튼이다',numberBtn.innerText)
+      for(let j= i*5 ; j< i*5 + 5 ; j++){
+        console.log(j)
+        // listDiv.textContent = data[j].title;
+        // document.getElementById('listDiv').appendChild(listDiv)
       }
+    })
+  }
 
       //버튼 누르면 목록 바뀜
       //div도 5개 > 0-4 / 5-9 / ...

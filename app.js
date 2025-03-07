@@ -3,12 +3,16 @@ const app = express();
 const PORT = 3002;
 const path = require('path');
 const fs = require('fs');
+const {json} = require("express");
+
+const filePath = path.join(__dirname, "dataprac.json");
 
 
 
 app.use(express.static("public"))
 app.use(express.json());
-let jsonData = "/dataprac.json"
+
+
 
 
 app.get('/', function(req,res) {
@@ -16,11 +20,12 @@ app.get('/', function(req,res) {
 })
 
 
-app.get('/dataprac', function(req,res) {
+// 데이터 조회, 파일 존재 유무 확인
+app.get('/dataprac', async (req,res) => {
+    const data = fs.readFileSync(filePath, "utf-8");
+    const jsonData = JSON.parse(data);
 
-    res.sendFile(path.join(__dirname, "dataprac.json"))
-
-
+    res.json(jsonData);
 
 })
 
@@ -29,26 +34,22 @@ app.get('/dataprac', function(req,res) {
 
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
-    const data = req.body;
+
+    // 파일 유무 확인 후 데이터 추가
+    if (!fs.existsSync(filePath)) {
+        const newBody = req.body;
+
+        console.log("파일이 없습니다. 새 파일을 생성합니다.");
+        fs.writeFileSync(filePath, JSON.stringify([newBody], null, 2));
+        return res.json({ message: "새 파일 생성 및 데이터 추가 완료", data: newBody });
+    }
 
 
-    jsonData.push(data)
-    res.redirect("/")
 
 
 
 
 
-
-    // const body = req.body;
-    //
-    // fs.readFile(path.join(__dirname, 'dataprac.json'))
-    //
-    // const jsonData = JSON.parse(body);
-    // jsonData.push(body);
-    //
-    // fs.writeFile(path.join(__dirname, 'dataprac.json'), JSON.stringify(jsonData, null, 2))
-    //
 
 
 })

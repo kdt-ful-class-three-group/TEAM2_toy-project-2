@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 3002;
+const PORT = 3000;
 const path = require('path');
 const fs = require('fs');
 
@@ -59,5 +59,5 @@ app.post("/write", function(req,res) {
 })
 
 app.listen(PORT, function() {
-    console.log("http://localhost:3002/")
+    console.log("http://localhost:3000/")
 })

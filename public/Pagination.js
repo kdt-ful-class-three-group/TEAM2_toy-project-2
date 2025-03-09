@@ -1,5 +1,5 @@
 
-let dataArray = []
+let dataArray = [] // 데이터를 받을 배열 선언
 console.log(dataArray)
 let currentPage = 1
 let limit = 8 // 한번에 보여줄 페이지 개수
@@ -16,12 +16,13 @@ fetch("/data")// fs는 서버에서만 사용가능하기 때문에 브라우저
 
 
 function displayData (){
-    let start = (currentPage - 1 ) * limit
-    let end = start + limit
+    let start = (currentPage - 1 ) * limit //시작페이지
+    let end = start + limit // 끝페이지
     let showingData = dataArray.slice(start, end) // 현재 페이지에서 보여줄 리스트 데이터
 
-    document.getElementById('listDiv').innerHTML = "";
+    document.getElementById('listDiv').innerHTML = ""; // 리스트 초기화 쌓임 방지
 
+// 이 기능이 script.js에 비슷하게 있는데 이 파일에서는 pagination 기능 구현에 필요하기 때문에 추가함
     showingData.forEach(item =>{
         let div = document.createElement('div')
         div.textContent = item.title
@@ -37,16 +38,10 @@ function displayData (){
 
 
 
-// [ ] 총 페이지 개수
-let all = Math.ceil(dataArray.length / 5)
-
-
-// [ ] 화면에 보여질 페이지 그룹
-let show = Math.ceil(currentPage / 5)
-
-
-// [ ] 첫번째 페이지 번호
+// [ ] 버튼 함수 만들기
 
 
 
-// [ ] 마지막 페이지 번호
+// [ ] 페이지 이동.. 다음페이지 이전페이지,,
+
+

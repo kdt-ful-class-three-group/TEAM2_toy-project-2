@@ -30,7 +30,6 @@ texterea.addEventListener("input", function(){
 const writeBtn = document.getElementById("writeBtn")
 writeBtn.addEventListener('click', function() {
   const modal = document.getElementById('readModal')
-  console.log(modal.style)
   if(modal.style.display==='none' || modal.style.display===''){
     const form = document.getElementsByTagName('form')[0]
     form.classList.toggle("display-none")

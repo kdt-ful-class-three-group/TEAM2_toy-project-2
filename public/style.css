@@ -38,8 +38,62 @@
 body {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+  cursor: url('cat.png') 10 10, auto;
 }
 
+#writeBtn {
+  border-style: none;
+  border-radius: 5px;
+  background-color: rgb(97, 97, 252);
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+#writeBtn:hover {
+  background-color: rgb(97, 97, 252);
+}
+
+#writeBtn::after{
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* 왼쪽에서 오른쪽 */
+  direction: rtl;
+  /* z-index: -1; */
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+
+#writeBtn:hover::after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+#writeBtn:active {
+  top: 2px;
+} 
+
+form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}

@@ -1,5 +1,5 @@
 
-const textarea = document.getElementById("content");
+const texterea = document.getElementById("content");
 const port = 3000
 
 

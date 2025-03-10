@@ -2,7 +2,6 @@
 const texterea = document.getElementById("content");
 const port = 3000
 
-
 let timeToSave;
 // p태그를 가져옴
 let pText = document.getElementById('saveText')

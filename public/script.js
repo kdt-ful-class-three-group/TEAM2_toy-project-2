@@ -40,7 +40,6 @@ writeBtn.addEventListener('click', function() {
 
 
 
-
 // 모달 함수
 modals()
 
@@ -50,5 +49,20 @@ let contentValue = document.getElementById('content');
 document.getElementById("saveButton").addEventListener('click', function() {
   if(titleValue.value && contentValue.value){
     alert("저장되었습니다.")
+  }
+})
+
+
+//삭제
+const delBtn = document.getElementById('delete')
+
+delBtn.addEventListener("click", (event) => {
+
+  if (delBtn) {
+    delBtn.addEventListener("click", function() {
+      if (confirm("삭제하시겠습니까?")) {
+
+      }
+    });
   }
 })

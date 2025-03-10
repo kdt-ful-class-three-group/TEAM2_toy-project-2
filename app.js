@@ -72,6 +72,31 @@ app.post("/write", function(req,res) {
 
 })
 
+//삭제 요청
+
+app.delete("/delete", function(req,res) {
+    console.log("delete 요청 받음")
+    console.log(req.body)
+
+    const {id} = req.body;
+
+    if (!id) {
+        res.status(400).send("id가 없습니다.")
+        return;
+    }
+    const filepath = path.join(__dirname, "data.json")
+
+    //json파일 데이터 가져오기
+    const jsonData = fs.readFileSync(filepath).toString();
+    const jsonArr = JSON.parse(jsonData);
+
+    // 삭제 후 새로운 데이터
+    const newJsonArr = jsonArr.filter((item) => item.id !== id)
+
+    fs.writeFileSync(filepath, JSON.stringify(newJsonArr, null, 2));
+    console.log("삭제 성공", newJsonArr)
+});
+
 app.listen(PORT, function() {
     console.log("http://localhost:3000/")
 })

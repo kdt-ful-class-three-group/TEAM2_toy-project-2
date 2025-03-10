@@ -73,6 +73,7 @@ document.getElementById("nextBtn").addEventListener("click", nextBtn)
 // [ ] 페이지 이동.. 다음페이지 이전페이지,,
 function makeNumBtn (){
     let div = document.querySelector('section > div');
+    div.innerHTML = "";
     for (let i = 0; i < totalPage; i++){
         let NumBtn = document.createElement('button')
         NumBtn.innerText = i + 1
@@ -81,7 +82,13 @@ function makeNumBtn (){
         NumBtn.addEventListener('click', function() {
             currentPage = i + 1
             displayData()
+            makeNumBtn()
         })
+
+        if (currentPage === i + 1){
+            NumBtn.style.fontWeight = "bold"
+            NumBtn.style.backgroundColor = "skyblue"
+        }
     }
 }
 

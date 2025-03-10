@@ -57,9 +57,6 @@ fetch("/data")
     })
 
 
-
-
-
 // modal elements script 작성 영역
 
 

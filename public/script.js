@@ -30,7 +30,6 @@ texterea.addEventListener("input", function(){
 const writeBtn = document.getElementById("writeBtn")
 writeBtn.addEventListener('click', function() {
   const modal = document.getElementById('readModal')
-  console.log(modal.style)
   if(modal.style.display==='none' || modal.style.display===''){
     const form = document.getElementsByTagName('form')[0]
     form.classList.toggle("display-none")
@@ -48,26 +47,35 @@ function readModal(title, content) {
     const modal = document.getElementById("readModal");
     const modalContent = modal.querySelector("div");
 
+    const modalParent = document.querySelector('.modal')
+
     modalContent.innerHTML = `
     <h2>${title}</h2>
     <p>${content}</p>
   `;
 
     modal.style.display = "block";
+    modalParent.style.display='block'
 }
 
 // 닫기 버튼 클릭 시 modal 닫기
 function closeModal() {
     const readModal = document.getElementById("readModal");
+    const modalParent = document.querySelector('.modal')
 
     if (readModal) {
         readModal.style.display = "none";
+        modalParent.style.display='none'
     }
 
 }
 window.readModal = readModal;
 window.closeModal = closeModal;
 
+let titleValue = document.getElementById('title');
+let contentValue = document.getElementById('content');
 document.getElementById("saveButton").addEventListener('click', function() {
-  alert("저장되었습니다.")
+  if(titleValue.value && contentValue.value){
+    alert("저장되었습니다.")
+  }
 })

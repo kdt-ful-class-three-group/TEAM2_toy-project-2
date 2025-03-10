@@ -162,19 +162,19 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 73%);
   <button id="writeBtn" class="custom-btn btn-8"><span>글쓰기</span></button>
   <form action="/write" method="post" class="display-none">
 <!--      Json 파일 저장을 위한 name 속성 추가-->
-      <input type="text" id="title" placeholder="제목" name="title">
-      <textarea id="content" placeholder="내용을 입력해주세요" name="content"></textarea>
+      <input type="text" id="title" placeholder="제목" name="title" required>
+      <textarea id="content" placeholder="내용을 입력해주세요" name="content" rows="20"required></textarea>
       <p id="saveText">임시저장 됐습니다.</p>
       <button type="submit" id="saveButton">작성 완료</button>
   </form>
   <div>
     <div id="listDiv"></div>
     <section class="display-flex">
-      <button id="prevBtn">이전</button>
+      <button id="prevBtn">⬅&ensp;이전</button>
     <div>
     
     </div>
-      <button id="nextBtn">다음</button>
+      <button id="nextBtn">다음&ensp;➡</button>
     </section>
   </div>
 
@@ -192,7 +192,11 @@ background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 73%);
 
 
 
+<<<<<<< HEAD
   <script src="/script.js" defer></script>
+=======
+  <script src="/script.js"></script>
+>>>>>>> f332eca1554c17ae9b13a3d0e2a87d6d8edc8167
   <script src="/Pagination.js"></script>
 
 </body>

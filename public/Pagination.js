@@ -11,6 +11,7 @@ fetch("/data")// fs는 서버에서만 사용가능하기 때문에 브라우저
         dataArray = data;
         totalPage = Math.ceil(dataArray.length / limit);
         displayData();
+        makeNumBtn()
     })
     .catch(error => console.error("데이터 불러오기 실패:", error));
 
@@ -65,6 +66,19 @@ document.getElementById("nextBtn").addEventListener("click", nextBtn)
 
 
 // [ ] 페이지 이동.. 다음페이지 이전페이지,,
+function makeNumBtn (){
+    let div = document.querySelector('section > div');
+    for (let i = 0; i < totalPage; i++){
+        let NumBtn = document.createElement('button')
+        NumBtn.innerText = i + 1
+        div.appendChild(NumBtn)
+
+        NumBtn.addEventListener('click', function() {
+            currentPage = i + 1
+            displayData()
+        })
+    }
+}
 
 
 

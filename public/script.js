@@ -46,7 +46,10 @@ writeBtn.addEventListener('click', function() {
 modals()
 
 
-
+let titleValue = document.getElementById('title');
+let contentValue = document.getElementById('content');
 document.getElementById("saveButton").addEventListener('click', function() {
-  alert("저장되었습니다.")
+  if(titleValue.value && contentValue.value){
+    alert("저장되었습니다.")
+  }
 })

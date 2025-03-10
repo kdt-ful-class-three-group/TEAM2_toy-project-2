@@ -8,22 +8,22 @@
 </head>
 <body>
   <h1>📜글쓰기</h1>
-  <button id="writeBtn">글쓰기</button>
+  <button id="writeBtn" type="button">글쓰기</button>
   <form action="/write" method="post" class="display-none">
 <!--      Json 파일 저장을 위한 name 속성 추가-->
-      <input type="text" id="title" placeholder="제목" name="title">
-      <textarea id="content" placeholder="내용을 입력해주세요" name="content"></textarea>
+      <input type="text" id="title" placeholder="제목" name="title" required>
+      <textarea id="content" placeholder="내용을 입력해주세요" name="content" rows="20"required></textarea>
       <p id="saveText">임시저장 됐습니다.</p>
       <button type="submit" id="saveButton">작성 완료</button>
   </form>
   <div>
     <div id="listDiv"></div>
     <section class="display-flex">
-      <button id="prevBtn">이전</button>
+      <button id="prevBtn">⬅&ensp;이전</button>
     <div>
     
     </div>
-      <button id="nextBtn">다음</button>
+      <button id="nextBtn">다음&ensp;➡</button>
     </section>
   </div>
 
@@ -43,7 +43,6 @@
 
   <script defer type="module" src="/script.js"></script>
   <script type="module" src="/Pagination.js"></script>
-
 
 </body>
 </html>

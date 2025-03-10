@@ -21,6 +21,7 @@ fetch("/data")// fs는 서버에서만 사용가능하기 때문에 브라우저
     .catch(error => console.error("데이터 불러오기 실패:", error));
 
 
+
  displayData();
 
 
@@ -46,7 +47,8 @@ export function makeNumBtn (){
 
         if (pageState.currentPage === i + 1){
             NumBtn.style.fontWeight = "bold"
-            NumBtn.style.backgroundColor = "skyblue"
+            NumBtn.style.backgroundColor = "#b4b4f1"
+            NumBtn.style.borderRadius = '5px'
         }
     }
 }

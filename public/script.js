@@ -38,7 +38,7 @@ writeBtn.addEventListener('click', function() {
     alert('상세보기 중 글 작성이 안됩니다.')
   }
 
-})
+}) 
 
 
 // json파일불러오기

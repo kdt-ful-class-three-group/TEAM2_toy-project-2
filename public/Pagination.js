@@ -29,8 +29,13 @@ function displayData (){
         div.textContent = item.title
         div.setAttribute("style", "cursor:pointer");
         div.addEventListener("click", function() {
-            readModal(item.title, item.content);
-
+            const form = document.getElementsByTagName('form')[0]
+          if(form.classList.contains('display-none')){
+              readModal(item.title, item.content);
+            } else {
+                alert('글 작성 중 상세보기가 안됩니다.')
+            }
+            
     })
         document.getElementById("listDiv").appendChild(div);
 

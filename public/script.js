@@ -34,35 +34,61 @@ writeBtn.addEventListener('click', function() {
 })
 
 
+
+
 // json파일불러오기
 
-let datalist = null
+
 fetch("/data")
-    .then(response => response.json())
-    .then(data =>  {
+.then(response => response.json())
+.then(data =>  {
 
-      // 5개씩 보일 때 페이지 개수
-      let all = Math.ceil(data.lenght/5)
-      for(let i =0; i<all ; i++){
-        let numberBtn = document.createElement('button')
-        numberBtn.innerText = `${i + 1}`
+  // 숫자만큼 list 개수
+  let listNum = 5;
+  // listNum에 맞춰 div만들기
+  // div title이 보이는 list를 5개씩 보이게 함
+  for (let i =0; i < listNum; i++){
+    let makeList = document.createElement('div')
+    document.getElementById('listDiv').appendChild(makeList)
+    makeList.innerText = data[i].title
+  }
+  
+      //5개씩 목록이 보일때 페이지 개수 + 버튼 생성
+      let all = Math.ceil(data.length / listNum)
+      for(let i=0; i<all; i++){
+        let numberBtn = document.createElement('button');
+        numberBtn.innerText= `${i+1}`
         document.getElementById('btns').appendChild(numberBtn)
-      }
+      
 
-
-      // 버튼 누르면 목록 바뀜
-
-
-      data.forEach(i => {
-        // div만들기
-        let div = document.createElement("div")
-        div.textContent = i.title;
-        div.setAttribute("style", "cursor:pointer");
-        div.addEventListener("click", function() {
-          readModal(i.title, i.content)
-        })
-        document.getElementById('listDiv').appendChild(div)
+      //버튼 누르면 목록 바뀜(클릭시 이벤트)
+      numberBtn.addEventListener('click', function() {
+        for(let j = i*listNum; j<listNum*(i+1); j++){
+          console.log(j)
+          
+          for(let k =0; k <listNum; k++){
+            makeList[k].innerText = data[j].title
+          }
+        }
       })
+
+      }
+      // div를 5개로 끊어냄 / 0-4 / 5-9 / ...
+      // 5개의 div중 맨 윗 번호 : ((페이지 번호-1)*5)
+      // 5개의 div중 마지막 번호 : (페이지번호 * 5) -1
+
+
+
+      // data.forEach(i => {
+      //   // div만들기
+      //   let div = document.createElement("div")
+      //   div.textContent = i.title;
+      //   div.setAttribute("style", "cursor:pointer");
+      //   div.addEventListener("click", function() {
+      //     readModal(i.title, i.content)
+      //   })
+      //   document.getElementById('listDiv').appendChild(div)
+      // })
 
       console.log(data)
     })

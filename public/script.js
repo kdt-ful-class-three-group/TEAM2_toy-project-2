@@ -47,20 +47,25 @@ function readModal(title, content) {
     const modal = document.getElementById("readModal");
     const modalContent = modal.querySelector("div");
 
+    const modalParent = document.querySelector('.modal')
+
     modalContent.innerHTML = `
     <h2>${title}</h2>
     <p>${content}</p>
   `;
 
     modal.style.display = "block";
+    modalParent.style.display='block'
 }
 
 // 닫기 버튼 클릭 시 modal 닫기
 function closeModal() {
     const readModal = document.getElementById("readModal");
+    const modalParent = document.querySelector('.modal')
 
     if (readModal) {
         readModal.style.display = "none";
+        modalParent.style.display='none'
     }
 
 }

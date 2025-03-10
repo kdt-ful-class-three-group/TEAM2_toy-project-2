@@ -3,28 +3,47 @@
 }
 
 .modal{
-    position:relative;
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 1;
 }
-
 .readModal{
     display: none;
     position: fixed;
     align-items: center;
-    padding-top: 100px;
-    left: 25%;
-    top: 20%;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
     width: 50vw;
-    height: 20%;
-    overflow: hidden;
-    background-color: #b4b4f1;
-    border: 1px solid black;
+    height: 40%;
+    /* overflow: hidden; */
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.readModal > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.readModal > div > p {
+  margin: 0;
 }
 
 .close{
     cursor: pointer;
     position: absolute;
-    top: 15px;
-    right: 35px;
+    top: 0;
+    right: 5%;
     color: black;
     font-size: 40px;
     font-weight: bold;
@@ -110,4 +129,38 @@ form {
   gap: 10px;
   padding: 10px;
   border: 1px solid #ccc;
+}
+
+#title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+body > div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#listDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#listDiv > div {
+  width: 100%;
+  border-bottom: 1px solid silver;
+  padding-bottom: 5px;
+}
+
+body > div> section {
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+body > div> section > div{
+  display: flex;
+  gap: 5px;
 }

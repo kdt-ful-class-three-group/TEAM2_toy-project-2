@@ -52,6 +52,7 @@ function prevBtn(){
     if(currentPage > 1 ){
         currentPage -- ;
         displayData();
+        makeNumBtn();
     }
 }
 
@@ -60,6 +61,7 @@ function nextBtn(){
     if(currentPage < totalPage){
         currentPage ++;
         displayData();
+        makeNumBtn();
     }
 }
 

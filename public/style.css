@@ -16,7 +16,7 @@
     width: 50vw;
     height: 20%;
     overflow: hidden;
-    background-color: rgb(180, 180, 241);
+    background-color: #b4b4f1;
     border: 1px solid black;
 }
 
@@ -43,3 +43,18 @@ body {
   align-items: center;
 }
 
+h1 {
+  color: #b4b4f1;
+    color: #8484f6;
+    background-color: #b4b4f1;
+    border: 1px solid #8484f6;
+
+}
+
+button {
+  color: #b4b4f1;
+  color: #8484f6;
+  background-color: #b4b4f1;
+  border: 1px solid #8484f6;
+
+}

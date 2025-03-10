@@ -3,7 +3,6 @@ import {modals} from "./modals.js";
 const texterea = document.getElementById("content");
 const port = 3000
 
-
 let timeToSave;
 // p태그를 가져옴
 let pText = document.getElementById('saveText')
@@ -47,6 +46,10 @@ modals()
 
 
 
+let titleValue = document.getElementById('title');
+let contentValue = document.getElementById('content');
 document.getElementById("saveButton").addEventListener('click', function() {
-  alert("저장되었습니다.")
+  if(titleValue.value && contentValue.value){
+    alert("저장되었습니다.")
+  }
 })

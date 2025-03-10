@@ -1,12 +1,13 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import fs from 'fs';
+
 const app = express();
 const PORT = 3000;
-const path = require('path');
-const fs = require('fs');
 
 
 
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 //!express는 POST요청의 body(요청)을 파싱하지 않음
 // URL 인코딩된 본문 데이터를 파싱함
@@ -17,6 +18,11 @@ app.use(express.urlencoded({extended: false}));
 //JSON 형태의 본문 데이터를 파싱함
 app.use(express.json());
 //*이 두가지 미들웨어를 사용하면 body를 파싱함
+
+//__dirname이 ES Module에서는 기본적으로 제공되지 않음 → 직접 설정 필요
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //json파일이 없으면 [] 넣어서 생성하기
 //? html과 연결된 script.js에서 fetch로 json파일을 받음

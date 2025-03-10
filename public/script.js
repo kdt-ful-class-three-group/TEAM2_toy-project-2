@@ -71,7 +71,7 @@ fetch("/data")
         //i=0    0 1 2 3 4
         //i=1    5 6 7 8 9
         //i=2   10 11 12 13 14 ...
-        //=> 보이는 목록 개수를 5로 지정했을 때 목록에 해당하는 배열의 인덱스 = i*5 + k === i * listNumber + k
+        //=> 보이는 목록 개수를 5로 지정했을 때 목록에 해당하는 배열의 인덱스 => i*5 + k === i * listNumber + k
         makeList[k].textContent = ''
         if(data[k+listNumber*i]!==undefined){
           makeList[k].innerText= data[k+listNumber*i].title

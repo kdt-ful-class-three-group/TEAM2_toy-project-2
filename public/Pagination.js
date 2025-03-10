@@ -38,7 +38,21 @@ function displayData (){
 
 
 
-// [ ] 버튼 함수 만들기
+    let numberContainer = document.getElementById("number");
+    numberContainer.innerHTML = "";
+    for(let i = 1; i <= totalPage; i++){
+        let span = document.createElement("span")
+        span.textContent = i;
+        span.setAttribute("style", "cursor:pointer; margin: 0 5px");
+        span.addEventListener("click", function(){
+            currentPage = i;
+            displayData();
+        })
+
+        numberContainer.appendChild(span);
+
+    }
+
 
 
 // 이전페이지 함수

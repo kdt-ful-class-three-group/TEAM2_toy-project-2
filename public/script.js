@@ -1,3 +1,4 @@
+import {modals} from "./modals.js";
 
 const texterea = document.getElementById("content");
 const port = 3000
@@ -39,33 +40,12 @@ writeBtn.addEventListener('click', function() {
 })
 
 
-// modal elements script 작성 영역
 
 
-// 상세보기 모달창, titile, content를 가져오기 위함
-function readModal(title, content) {
-    const modal = document.getElementById("readModal");
-    const modalContent = modal.querySelector("div");
+// 모달 함수
+modals()
 
-    modalContent.innerHTML = `
-    <h2>${title}</h2>
-    <p>${content}</p>
-  `;
 
-    modal.style.display = "block";
-}
-
-// 닫기 버튼 클릭 시 modal 닫기
-function closeModal() {
-    const readModal = document.getElementById("readModal");
-
-    if (readModal) {
-        readModal.style.display = "none";
-    }
-
-}
-window.readModal = readModal;
-window.closeModal = closeModal;
 
 document.getElementById("saveButton").addEventListener('click', function() {
   alert("저장되었습니다.")

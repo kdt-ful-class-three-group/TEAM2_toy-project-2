@@ -73,7 +73,7 @@ document.getElementById("nextBtn").addEventListener("click", nextBtn)
 // [ ] 페이지 이동.. 다음페이지 이전페이지,,
 function makeNumBtn (){
     let div = document.querySelector('section > div');
-    div.innerHTML = "";
+    div.innerHTML = ""; // 초기화
     for (let i = 0; i < totalPage; i++){
         let NumBtn = document.createElement('button')
         NumBtn.innerText = i + 1

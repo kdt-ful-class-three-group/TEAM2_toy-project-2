@@ -4,47 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>글쓰기</title>
-<style>
-
-.display-none {
-  display: none;
-}
-
-.modal{
-    position:relative;
-}
-
-.readModal{
-    display: none;
-    position: fixed;
-    align-items: center;
-    padding-top: 100px;
-    left: 25%;
-    top: 20%;
-    width: 50vw;
-    height: 20%;
-    overflow: hidden;
-    background-color: rgb(180, 180, 241);
-    border: 1px solid black;
-}
-
-.close{
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: black;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-body section{
-  display: flex;
-}
-
-</style>
-
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <h1>📜글쓰기</h1>
@@ -58,7 +18,7 @@ body section{
   </form>
   <div>
     <div id="listDiv"></div>
-    <section>
+    <section class="display-flex">
       <button id="prevBtn">이전</button>
     <div>
     

@@ -32,39 +32,9 @@ writeBtn.addEventListener('click', function() {
   const form = document.getElementsByTagName('form')[0]
   form.classList.toggle("display-none")
 
+  console.log(document.getElementById('modal'))
+
 })
-
-
-// json파일불러오기
-
-// let datalist = null
-// fetch("/data")
-//     .then(response => response.json())
-//     .then(data =>  {
-
-//       data.forEach(i => {
-//         // div만들기
-//         let div = document.createElement("div")
-//         div.textContent = i.title;
-//         div.setAttribute("style", "cursor:pointer");
-//         div.addEventListener("click", function() {
-//           const form = document.getElementsByTagName('form')[0]
-//           if(form.classList.contains('display-none') === false){
-//             return
-//           } else {
-//             readModal(i.title, i.content)
-//           }
-
-//         })
-//         document.getElementById('listDiv').appendChild(div)
-
-//       })
-
-//       console.log(data)
-//     })
-
-
-
 
 
 // modal elements script 작성 영역

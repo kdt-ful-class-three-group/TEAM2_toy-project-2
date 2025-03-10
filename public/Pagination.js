@@ -2,7 +2,7 @@
 let dataArray = [] // 데이터를 받을 배열 선언
 console.log(dataArray)
 let currentPage = 1
-let limit = 8 // 한번에 보여줄 페이지 개수
+let limit = 5 // 한번에 보여줄 페이지 개수
 let totalPage = Math.ceil(dataArray.length / limit); // 전체페이지 개수를 정함
 
 fetch("/data")// fs는 서버에서만 사용가능하기 때문에 브라우저에서는 fetch를 써서 데이터를 받아와야 함!
@@ -41,7 +41,30 @@ function displayData (){
 // [ ] 버튼 함수 만들기
 
 
+// 이전페이지 함수
+function prevBtn(){
+    if(currentPage > 1 ){
+        currentPage -- ;
+        displayData();
+    }
+}
+
+
+function nextBtn(){
+    if(currentPage < totalPage){
+        currentPage ++;
+        displayData();
+    }
+}
+
+
+
+// 버튼에 클릭이벤트 추가
+document.getElementById("prevBtn").addEventListener("click", prevBtn)
+document.getElementById("nextBtn").addEventListener("click", nextBtn)
+
 
 // [ ] 페이지 이동.. 다음페이지 이전페이지,,
+
 
 

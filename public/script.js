@@ -45,7 +45,6 @@ writeBtn.addEventListener('click', function() {
 modals()
 
 
-
 let titleValue = document.getElementById('title');
 let contentValue = document.getElementById('content');
 document.getElementById("saveButton").addEventListener('click', function() {

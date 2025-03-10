@@ -21,6 +21,7 @@ fetch("/data")// fs는 서버에서만 사용가능하기 때문에 브라우저
     .catch(error => console.error("데이터 불러오기 실패:", error));
 
 
+
  displayData();
 
 

@@ -89,7 +89,8 @@ function makeNumBtn (){
 
         if (currentPage === i + 1){
             NumBtn.style.fontWeight = "bold"
-            NumBtn.style.backgroundColor = "skyblue"
+            NumBtn.style.backgroundColor = "#b4b4f1"
+            NumBtn.style.borderRadius = '5px'
         }
     }
 }

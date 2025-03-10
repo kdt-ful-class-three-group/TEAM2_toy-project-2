@@ -72,6 +72,10 @@ function closeModal() {
 window.readModal = readModal;
 window.closeModal = closeModal;
 
+let titleValue = document.getElementById('title');
+let contentValue = document.getElementById('content');
 document.getElementById("saveButton").addEventListener('click', function() {
-  alert("저장되었습니다.")
+  if(titleValue.value && contentValue.value){
+    alert("저장되었습니다.")
+  }
 })

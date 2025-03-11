@@ -1,8 +1,4 @@
-/**
- * @function modals
- * modal과 관련된 함수, readModal : modal보여줌, closeModla: modal창 닫기
- */
-function modals(){
+
 // 상세보기 모달창, titile, content를 가져오기 위함
     /**
      * modal창의 내용 구성하고 목록 클릭했을 때 보여주는 함수
@@ -16,7 +12,9 @@ function modals(){
         const modal = document.querySelector(".modal"); // 모달 전체 배경
         const readModal = document.getElementById("readModal"); // 모달 창
 
-        const modalContent = readModal.querySelector("div");
+        const modalContent = readModal.querySelector("div")
+        modalContent.setAttribute("id", id)
+
 
         modalContent.innerHTML = `
         <h2>${title}</h2>
@@ -40,6 +38,6 @@ function modals(){
 
     window.readModal = readModal;
     window.closeModal = closeModal;
-}
-modals();
-export {modals}
+
+
+export {readModal, closeModal}

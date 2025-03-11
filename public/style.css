@@ -70,7 +70,9 @@ body {
 }
 
 h1 {
-  color: #6868f1;
+  font-family: "Cookie",cursive;
+  font-size: 60px;
+  font-weight: 400;
 }
 
 /* 글쓰기 버튼에 적용할 스타일 */

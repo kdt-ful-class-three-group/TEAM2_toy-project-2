@@ -10,10 +10,19 @@ pText.classList.add("display-none")
 // content Input에 작성 안할시 타이머 설정
 texterea.addEventListener("input", function(){
   const content = texterea.value;
-  console.log(content);
   clearTimeout(timeToSave); // 이전 타이머 제거
   // 입력중일때 p태그에 display-none class 추가(입력중일 때 p태그 안 보임)
   pText.classList.add("display-none")
+
+  //글자수 세기
+  const countLength = document.getElementsByTagName('span')[0];
+  countLength.innerText = content.length
+
+  if(content.length>450){
+    countLength.style.color = 'red'
+  } else {
+    countLength.style.color = '#aaa'
+  }
 
   //5초동안 반응 없을 때 로직
   timeToSave = setTimeout(() => {

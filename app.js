@@ -51,7 +51,7 @@ app.get('/cat.png',function(req,res){
 app.post("/write", function(req,res) {
     console.log("write 요청 받음")
     //입력 데이터 확인하기
-    console.log(req.body)
+    console.log('write',req.body)
 
     //json파일 데이터 가져오기
     //readFileSync로 파일을 읽음 : Buffer로 나오는 값을 toString으로 문자열로 변환
@@ -74,27 +74,29 @@ app.post("/write", function(req,res) {
 
 //삭제 요청
 
-app.delete("/delete", function(req,res) {
+app.post("/order", function(req,res) {
     console.log("delete 요청 받음")
-    console.log(req.body)
+    // console.log('delete',req.body)
+    // console.log(req.body)
 
-    const {id} = req.body;
+    // const {id} = req.body;
 
-    if (!id) {
-        res.status(400).send("id가 없습니다.")
-        return;
-    }
-    const filepath = path.join(__dirname, "data.json")
+    // if (!id) {
+    //     res.status(400).send("id가 없습니다.")
+    //     return;
+    // }
+    // const filepath = path.join(__dirname, "data.json")
 
-    //json파일 데이터 가져오기
-    const jsonData = fs.readFileSync(filepath).toString();
-    const jsonArr = JSON.parse(jsonData);
+    // //json파일 데이터 가져오기
+    // const jsonData = fs.readFileSync(filepath).toString();
+    // const jsonArr = JSON.parse(jsonData);
 
-    // 삭제 후 새로운 데이터
-    const newJsonArr = jsonArr.filter((item) => item.id !== id)
+    // // 삭제 후 새로운 데이터
+    // const newJsonArr = jsonArr.filter((item) => item.id !== id)
 
-    fs.writeFileSync(filepath, JSON.stringify(newJsonArr, null, 2));
-    console.log("삭제 성공", newJsonArr)
+    // fs.writeFileSync(filepath, JSON.stringify(newJsonArr, null, 2));
+    // console.log("삭제 성공", newJsonArr)
+    res.redirect("/")
 });
 
 app.listen(PORT, function() {

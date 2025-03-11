@@ -56,15 +56,15 @@ document.getElementById("saveButton").addEventListener('click', function() {
 
 
 //삭제
-const delBtn = document.getElementById('delete')
+// const delBtn = document.getElementById('delete')
 
-delBtn.addEventListener("click", (event) => {
+// delBtn.addEventListener("click", (event) => {
 
-  if (delBtn) {
-    delBtn.addEventListener("click", function() {
-      if (confirm("삭제하시겠습니까?")) {
+//   if (delBtn) {
+//     delBtn.addEventListener("click", function() {
+//       if (confirm("삭제하시겠습니까?")) {
 
-      }
-    });
-  }
-})
+//       }
+//     });
+//   }
+// })

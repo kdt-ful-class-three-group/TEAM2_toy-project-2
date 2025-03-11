@@ -76,8 +76,8 @@ app.post("/write", function(req,res) {
 
 app.post("/order", function(req,res) {
     console.log("delete 요청 받음")
-    // console.log('delete',req.body)
-    console.log(req.body)
+    console.log('delete',req.body)
+    // console.log(req.body)
 
     // const {id} = req.body;
 

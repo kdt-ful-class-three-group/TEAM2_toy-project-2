@@ -96,7 +96,7 @@ app.post("/delete", function(req,res) {
 
         console.log("삭제 전 데이터:", jsonArr)
 
-        // 삭제 후 새로운 데이터
+        // 삭제 후 새로운 데이터로 삽입 -> index로 설정하여 비교
 
         const newJsonArr = jsonArr.filter((item,index) => String(index) !== String(id));
         console.log("삭제 후 데이터:", newJsonArr);

@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>글쓰기</title>
+  <title>WriteUp</title>
   <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>📜글쓰기</h1>
-  <button id="writeBtn" type="button">글쓰기</button>
+  <h1>📜WriteUp</h1>
+  <button id="writeBtn" type="button" class="buttonStyle">글쓰기</button>
   <form action="/write" method="post" class="display-none">
 <!--      Json 파일 저장을 위한 name 속성 추가-->
       <input type="text" id="title" placeholder="제목" name="title" required>
       <textarea id="content" placeholder="내용을 입력해주세요" name="content" rows="20"required></textarea>
+      <p id="limit"><span>0</span>/450자</p>
       <p id="saveText">임시저장 됐습니다.</p>
-      <button type="submit" id="saveButton">작성 완료</button>
+      <button type="submit" id="saveButton" class="buttonStyle">작성 완료</button>
   </form>
   <div>
     <div id="listDiv"></div>

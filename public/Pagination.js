@@ -30,7 +30,10 @@ fetch("/data")// fs는 서버에서만 사용가능하기 때문에 브라우저
 pageBtn()
 
 
-// [ ] 페이지 이동.. 다음페이지 이전페이지,,
+/**
+ * 목록에 따라 숫자 버튼 생성 + 클릭이벤트 적용하는 함수
+ * 해당 페이지의 숫자버튼 스타일 지정
+ */
 export function makeNumBtn (){
     let div = document.querySelector('section > div');
     div.innerHTML = ""; // 초기화

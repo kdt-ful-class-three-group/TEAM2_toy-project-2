@@ -1,7 +1,6 @@
 import {closeModal, readModal} from "./modals.js";
 
 const texterea = document.getElementById("content");
-const port = 3000
 
 let timeToSave;
 // p태그를 가져옴
@@ -11,24 +10,35 @@ pText.classList.add("display-none")
 // content Input에 작성 안할시 타이머 설정
 texterea.addEventListener("input", function(){
   const content = texterea.value;
-  console.log(content);
   clearTimeout(timeToSave); // 이전 타이머 제거
   // 입력중일때 p태그에 display-none class 추가(입력중일 때 p태그 안 보임)
   pText.classList.add("display-none")
+
+  //글자수 세기
+  const countLength = document.getElementsByTagName('span')[0];
+  countLength.innerText = content.length
+
+  if(content.length>450){
+    countLength.style.color = 'red'
+  } else {
+    countLength.style.color = '#aaa'
+  }
 
   //5초동안 반응 없을 때 로직
   timeToSave = setTimeout(() => {
     console.log("저장해야합니다. 5초 지났습니다.");
     localStorage.setItem("content", content);
 
-    // 5초 후에 p태그 보임
+    // 2초 후에 p태그 보임
     pText.classList.remove("display-none")
-  }, 5000);
+  }, 2000);
 });
 
 // 글쓰기 버튼 클릭 시 input 생성
 const writeBtn = document.getElementById("writeBtn")
-writeBtn.addEventListener('click', function() {
+//글쓰기 버튼 클릭 이벤트
+//modal이 켜져있을 땐 실행 안되도록 진행
+writeBtn.addEventListener('click', function(e) {
   const modal = document.getElementById('readModal')
   if(modal.style.display==='none' || modal.style.display===''){
     const form = document.getElementsByTagName('form')[0]
@@ -40,17 +50,25 @@ writeBtn.addEventListener('click', function() {
 
 
 
+
 // 모달 함수
 readModal()
 closeModal()
 
 
-
+//저장버튼 눌렀을 때, input에 값이 없으면 alert으로 안내
 let titleValue = document.getElementById('title');
 let contentValue = document.getElementById('content');
-document.getElementById("saveButton").addEventListener('click', function() {
-  if(titleValue.value && contentValue.value){
-    alert("저장되었습니다.")
+document.getElementById("saveButton").addEventListener('click', function(e) {
+  //450자 넘어가면 클릭 안됨
+  const contentLength = document.getElementById('content').value.length;
+  if(contentLength <= 450) {
+    if(titleValue.value && contentValue.value){
+      alert("저장되었습니다.")
+    }
+  } else {
+    e.preventDefault()
+    alert('450자까지 작성이 가능합니다.')
   }
 })
 

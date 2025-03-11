@@ -1,7 +1,6 @@
 import {modals} from "./modals.js";
 
 const texterea = document.getElementById("content");
-const port = 3000
 
 let timeToSave;
 // p태그를 가져옴
@@ -21,9 +20,9 @@ texterea.addEventListener("input", function(){
     console.log("저장해야합니다. 5초 지났습니다.");
     localStorage.setItem("content", content);
 
-    // 5초 후에 p태그 보임
+    // 2초 후에 p태그 보임
     pText.classList.remove("display-none")
-  }, 5000);
+  }, 2000);
 });
 
 // 글쓰기 버튼 클릭 시 input 생성

@@ -1,7 +1,9 @@
+/* js파일에서 display 관련해 핸들링 하기 위한 클래스 */
 .display-none {
   display: none;
 }
 
+/* modal창 눌렀을 때 스타일 */
 .modal{
     position:absolute;
     top: 0;
@@ -71,6 +73,7 @@ h1 {
   color: #6868f1;
 }
 
+/* 글쓰기 버튼에 적용할 스타일 */
 #writeBtn {
   background-color: #fff;
   background-image: linear-gradient(315deg, #fff -10%, #b4b4f1 110%);
@@ -127,6 +130,7 @@ h1 {
   border-right: 2px solid #b4b4f1;
 }
 
+/* form태그 */
 form {
   width: 50%;
   display: flex;
@@ -140,6 +144,8 @@ form {
   font-size: 20px;
   font-weight: bold;
 }
+
+/* 목록 스타일 */
 
 body > div {
   width: 50%;
@@ -166,6 +172,8 @@ body > div {
  
 }
 
+/* 목록에서 pagination과 연관된 버튼 스타일 */
+
 body > div> section {
   width: 100%;
   justify-content: center;
@@ -191,6 +199,8 @@ body section > div button {
   background-color: transparent;
   cursor: pointer;
 }
+
+/* 임시저장 텍스트 */
 
 #saveText {
   margin: 0;

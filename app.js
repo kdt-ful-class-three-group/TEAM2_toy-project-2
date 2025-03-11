@@ -7,16 +7,16 @@ const PORT = 3000;
 
 
 
-app.use(express.static("public"));
+app.use(express.json());
 
+app.use(express.static("public"));
 //!express는 POST요청의 body(요청)을 파싱하지 않음
 // URL 인코딩된 본문 데이터를 파싱함
 //extend:false => querystring 라이브러리를 사용해서 간단한 문자열, 배열형태의 데이터만 파싱
 //extend:true => qs 라이브러리를 사용해서 복잡한 객체형태의 데이터도 파싱
-app.use(express.urlencoded({extended: false}));
 
+app.use(express.urlencoded({extended: true}));
 //JSON 형태의 본문 데이터를 파싱함
-app.use(express.json());
 //*이 두가지 미들웨어를 사용하면 body를 파싱함
 
 //__dirname이 ES Module에서는 기본적으로 제공되지 않음 → 직접 설정 필요
@@ -62,22 +62,25 @@ app.post("/write", function(req,res) {
     //입력 데이터 가져오기
     const data = req.body;
 
+    console.log("ID 추가된 데이터:", data);
+
     //json파일에 데이터 추가하기
     jsonArr.push(data)
-
     //json파일에 데이터 저장하기
     fs.writeFileSync(path.join(__dirname, "data.json"), JSON.stringify(jsonArr))
 
+    console.log("저장된 데이터", jsonArr)
     res.redirect("/")
 
 })
 
 //삭제 요청
 
-app.delete("/delete", function(req,res) {
+app.post("/delete", function(req,res) {
     console.log("delete 요청 받음")
-    console.log(req.body)
+    console.log("req.body:", req.body);
 
+    const {id} = req.body
 
     if (!id) {
         console.log("id가 없습니다.")
@@ -85,20 +88,40 @@ app.delete("/delete", function(req,res) {
     }
     const filepath = path.join(__dirname, "data.json")
 
-    //json파일 데이터 가져오기
-    const jsonData = fs.readFileSync(filepath).toString();
-    const jsonArr = JSON.parse(jsonData);
+    try{
+        //json파일 데이터 가져오기
+        const jsonData = fs.readFileSync(filepath).toString();
+        let jsonArr = JSON.parse(jsonData);
 
-    // 삭제
-    delete jsonArr[{id}];
 
-    // 삭제 후 새로운 데이터
-    const newJsonArr = jsonArr.filter((item) => item.id !== id)
+        console.log("삭제 전 데이터:", jsonArr)
 
-    fs.writeFileSync(filepath, JSON.stringify(newJsonArr, null, 2));
-    console.log("삭제 성공", newJsonArr)
+        // 삭제 후 새로운 데이터
+
+        const newJsonArr = jsonArr.filter((item,index) => String(index) !== String(id));
+        console.log("삭제 후 데이터:", newJsonArr);
+
+        fs.writeFileSync("data.json", JSON.stringify(newJsonArr, null, 2));
+
+        const updatedJsonData = fs.readFileSync(filepath, "utf8");
+        console.log("파일 저장 후 확인:", JSON.parse(updatedJsonData));
+
+
+
+
+
+
+    } catch (error) {
+        console.error("삭제 실패:", error)
+        res.status(500).send("삭제 실패")
+
+    }
+
+
+
+
 });
 
 app.listen(PORT, function() {
-    console.log("http://localhost:3000/")
+    console.log(`http://localhost:${PORT}`)
 })

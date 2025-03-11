@@ -1,4 +1,4 @@
-import {modals} from "./modals.js";
+import {closeModal, readModal} from "./modals.js";
 
 const texterea = document.getElementById("content");
 const port = 3000
@@ -41,7 +41,9 @@ writeBtn.addEventListener('click', function() {
 
 
 // 모달 함수
-modals()
+readModal()
+closeModal()
+
 
 
 let titleValue = document.getElementById('title');
@@ -56,13 +58,31 @@ document.getElementById("saveButton").addEventListener('click', function() {
 //삭제
 const delBtn = document.getElementById('delete')
 
-delBtn.addEventListener("click", (event) => {
+delBtn.addEventListener("click", () => {
+  const modal = document.getElementById('readModal')
+  const modalContent = modal.querySelector("div")
+  const id = modalContent.getAttribute("id")
 
-  if (delBtn) {
-    delBtn.addEventListener("click", function() {
-      if (confirm("삭제하시겠습니까?")) {
+  if(id && confirm("삭제하시겠습니까?")){
+    console.log("삭제 요청할 id:", id);
 
-      }
-    });
-  }
-})
+    fetch(`http://localhost:${port}/delete`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id: String(id) })
+    }).then(response => {
+        if(response.status === 200){
+            alert("삭제되었습니다.")
+            closeModal()
+            window.location.reload()
+        } else {
+            alert("삭제에 실패했습니다.")
+        }
+    })
+
+  }})
+
+
+

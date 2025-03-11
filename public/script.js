@@ -29,7 +29,7 @@ texterea.addEventListener("input", function(){
 const writeBtn = document.getElementById("writeBtn")
 //글쓰기 버튼 클릭 이벤트
 //modal이 켜져있을 땐 실행 안되도록 진행
-writeBtn.addEventListener('click', function() {
+writeBtn.addEventListener('click', function(e) {
   const modal = document.getElementById('readModal')
   if(modal.style.display==='none' || modal.style.display===''){
     const form = document.getElementsByTagName('form')[0]
@@ -41,15 +41,23 @@ writeBtn.addEventListener('click', function() {
 
 
 
+
 // 모달 함수
 modals()
 
 //저장버튼 눌렀을 때, input에 값이 없으면 alert으로 안내
 let titleValue = document.getElementById('title');
 let contentValue = document.getElementById('content');
-document.getElementById("saveButton").addEventListener('click', function() {
-  if(titleValue.value && contentValue.value){
-    alert("저장되었습니다.")
+document.getElementById("saveButton").addEventListener('click', function(e) {
+  //450자 넘어가면 클릭 안됨
+  const contentLength = document.getElementById('content').value.length;
+  if(contentLength <= 450) {
+    if(titleValue.value && contentValue.value){
+      alert("저장되었습니다.")
+    }
+  } else {
+    e.preventDefault()
+    alert('450자까지 작성이 가능합니다.')
   }
 })
 

@@ -52,6 +52,8 @@ app.post("/write", function(req,res) {
     console.log("write 요청 받음")
     //입력 데이터 확인하기
     console.log(req.body)
+    console.log('content',req.body.content.length)
+    
 
     //json파일 데이터 가져오기
     //readFileSync로 파일을 읽음 : Buffer로 나오는 값을 toString으로 문자열로 변환

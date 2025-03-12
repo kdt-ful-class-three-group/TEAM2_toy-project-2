@@ -144,4 +144,13 @@ div#listDiv > div:last-child {
 }
 div#listDiv > div:hover {
   background-color: var(--list-color);
+  color: var(--light-color);
+  font-weight: 500;
+}
+
+/* 목록 버튼 */
+body > div > section button{
+  border: none;
+  background: none;
+  cursor: pointer;
 }

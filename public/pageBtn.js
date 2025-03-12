@@ -1,5 +1,6 @@
 import { displayData } from "./displayData.js";
 import { pageState, makeNumBtn } from "./Pagination.js";
+import { addEvent, bindHandlers } from "./util/EventUtils.js";
 
 // 페이지 버튼 관리 모듈
 const PageButtons = {
@@ -19,8 +20,15 @@ const PageButtons = {
    * 이벤트 리스너 설정
    */
   setupEventListeners: function() {
-    this.elements.prevButton.addEventListener("click", this.handlePrevClick.bind(this));
-    this.elements.nextButton.addEventListener("click", this.handleNextClick.bind(this));
+    // 핸들러 바인딩
+    const handlers = bindHandlers(this, {
+      handlePrevClick: this.handlePrevClick,
+      handleNextClick: this.handleNextClick
+    });
+    
+    // 이벤트 리스너 등록
+    addEvent(this.elements.prevButton, "click", handlers.handlePrevClick);
+    addEvent(this.elements.nextButton, "click", handlers.handleNextClick);
   },
   
   /**

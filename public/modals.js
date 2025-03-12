@@ -5,7 +5,7 @@
      * @param {string} title <form>에서 제목에 해당하는 문자열
      * @param {string} content <form>에서 내용에 해당하는 문자열
      */
-    function readModal(title, content) {
+    function readModal(title, content,id) {
 
         // 잘못 가져옴 수정  -> modal은 class이므로 querySelector로 가져옴
         // modal.style.display = "block";을 적용할 때 modal이 아닌 readModal만 처리하고 있음,  modal도 같이 처리해야함

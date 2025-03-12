@@ -1,0 +1,7 @@
+/* js파일에서 display 관련해 핸들링 하기 위한 클래스 */
+.display-none {
+  display: none;
+}
+.display-flex{
+  display: flex;
+}

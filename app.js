@@ -40,8 +40,8 @@ app.get('/data', function(req,res) {
     res.sendFile(path.join(__dirname, "data.json"))
 })
 
-app.get('/style.css',function(req,res){
-    res.sendFile(path.join(__dirname, "style.css"))
+app.get('/utility.css',function(req,res){
+    res.sendFile(path.join(__dirname, "utility.css"))
 })
 
 app.get('/cat.png',function(req,res){

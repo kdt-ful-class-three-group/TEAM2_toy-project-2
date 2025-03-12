@@ -35,7 +35,7 @@ pageBtn()
  * 해당 페이지의 숫자버튼 스타일 지정
  */
 export function makeNumBtn (){
-    let div = document.querySelector('section > div');
+    let div = document.querySelector('section.display-flex > div');
     div.innerHTML = ""; // 초기화
     for (let i = 0; i < pageState.totalPage; i++){
         let NumBtn = document.createElement('button')

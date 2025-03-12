@@ -109,7 +109,7 @@ app.delete("/delete", function(req,res) {
         console.log("파일 저장 후 확인:", JSON.parse(updatedJsonData));
 
 
-
+        // res.redirect()
 
 
 
@@ -119,7 +119,7 @@ app.delete("/delete", function(req,res) {
 
     }
 
-
+    res.redirect('/')
 
 
 });

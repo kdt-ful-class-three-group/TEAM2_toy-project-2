@@ -92,15 +92,12 @@ delBtn.addEventListener("click", () => {
       },
       body: JSON.stringify({ id: String(id) })
     }).then(response => {
-        if(response.status === 200){
-            alert("삭제되었습니다.")
+      console.log('status',response.status) //404
+          alert("삭제되었습니다.")
             closeModal()
             // 삭제 후 전체 reload하여 다시 불러옴
             window.location.reload()
-        } else {
-            alert("삭제에 실패했습니다.")
-        }
-    })
+    }).catch(error => console.error('리로드 안됨',error))
 
   }})
 

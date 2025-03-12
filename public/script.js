@@ -45,6 +45,11 @@ writeBtn.addEventListener('click', function(e) {
     const form = document.getElementsByTagName('form')[0]
     form.classList.toggle("display-none")
     form.classList.toggle("display-flex")
+    if(form.classList.contains('display-flex')){
+      writeBtn.textContent = '글 작성▲'
+    } else {
+      writeBtn.textContent = '글 작성▼'
+    }
   } else {
     alert('상세보기 중 글 작성이 안됩니다.')
   }

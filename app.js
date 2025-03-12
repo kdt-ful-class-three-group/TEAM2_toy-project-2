@@ -44,6 +44,10 @@ app.get('/utility.css',function(req,res){
     res.sendFile(path.join(__dirname, "utility.css"))
 })
 
+app.get('/page.css',function(req,res){
+    res.sendFile(path.join(__dirname, "page.css"))
+})
+
 app.get('/cat.png',function(req,res){
     res.sendFile(path.join(__dirname, "cat.png"))
 })

@@ -1,6 +1,7 @@
 import {closeModal, readModal} from "./modals.js";
 
 const texterea = document.getElementById("content");
+const port = 3000
 
 let timeToSave;
 // p태그를 가져옴
@@ -85,7 +86,7 @@ delBtn.addEventListener("click", () => {
     console.log("삭제 요청할 id:", id);
 
     fetch(`http://localhost:${port}/delete`, {
-      method: "POST",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json"
       },

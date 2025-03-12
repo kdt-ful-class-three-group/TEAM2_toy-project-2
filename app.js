@@ -78,7 +78,7 @@ app.post("/write", function(req,res) {
 
 //삭제 요청
 
-app.post("/delete", function(req,res) {
+app.delete("/delete", function(req,res) {
     console.log("delete 요청 받음")
     console.log("req.body:", req.body);
 

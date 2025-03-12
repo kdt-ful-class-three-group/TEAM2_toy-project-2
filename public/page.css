@@ -27,6 +27,7 @@ body {
 
 h1{
   font-family: "Phudu", sans-serif;
+  font-size: 50px;
   font-weight: 600;
   color: var(--dark-color);
 }
@@ -35,7 +36,6 @@ section#writeForm{
   width: 80%;
   max-width: 800px;
 }
-
 
 /* 글쓰기 버튼 */
 #writeBtn {
@@ -57,16 +57,46 @@ section#writeForm{
 /* form태그 스타일 */
 section#writeForm form {
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: rgba(86, 65, 142, 0.05);
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
   gap: 10px;
+  color: var(--primary-color);
 }
 form > input {
+  width: 100%;
   font-size: 16px;
   font-weight: 600;
   border: 1px solid var(--border-color);
 }
 form > textarea {
+  width: 100%;
   border: 1px solid var(--border-color);
+}
+form p {
+  width: 100%;
+  margin: 0;
+  color: var(--dark-color);
+}
+form p#limit{
+  text-align: right;
+}
+form span {
+  color: var(--border-color);
+}
+form p#saveText {
+  color: var(--point-color);
+  font-weight: 500;
+}
+form button {
+  background: linear-gradient(97.71deg, rgba(86, 65, 142, 0.7) -48.64%, rgba(86, 65, 142, 0.2) 118.09%);
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 30%;
 }

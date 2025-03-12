@@ -1,27 +1,18 @@
 // export한 변수는 read only기 때문에 변경할 수 없음, 다른 함수에서 값을 변경하려면 객체로 감싸서 내보내야함
+import { CONFIG } from "./util/ConfigManager.js";
+import { get } from "./util/APIService.js";
+import { createElement, clearElement, appendElement, setTextContent, setStyles } from "./util/DOMUtils.js";
+import { addEvent } from "./util/EventUtils.js";
+
+import { displayData } from "./displayData.js";
+import { pageBtn } from "./pageBtn.js";
 
 // 페이지네이션 상태 관리 객체
 export const pageState = {
   dataArray: [],
   currentPage: 1,
   totalPage: 0,
-  limit: 5,
-};
-
-import { displayData } from "./displayData.js";
-import { pageBtn } from "./pageBtn.js";
-
-// API 요청 관리
-const API = {
-  // 데이터 가져오기
-  fetchData: function() {
-    return fetch("/data")
-      .then(response => response.json())
-      .catch(error => {
-        console.error("데이터 불러오기 실패:", error);
-        return [];
-      });
-  }
+  limit: CONFIG.defaultPageLimit,
 };
 
 // 페이지네이션 기능 모듈
@@ -34,12 +25,15 @@ const Pagination = {
   
   // 데이터 로드 및 초기 설정
   loadData: function() {
-    API.fetchData()
+    get("data")
       .then(data => {
         pageState.dataArray = data;
         pageState.totalPage = Math.ceil(pageState.dataArray.length / pageState.limit);
         displayData();
         this.makeNumBtn();
+      })
+      .catch(error => {
+        console.error("데이터 불러오기 실패:", error);
       });
   },
   
@@ -49,25 +43,23 @@ const Pagination = {
    */
   makeNumBtn: function() {
     const div = document.querySelector("section > div");
-    div.innerHTML = ""; // 초기화
+    clearElement(div); // 초기화
     
     for (let i = 0; i < pageState.totalPage; i++) {
-      const numBtn = document.createElement("button");
-      numBtn.innerText = i + 1;
-      div.appendChild(numBtn);
+      const pageNumber = i + 1;
+      const numBtn = createElement("button", {}, pageNumber.toString());
+      appendElement(div, numBtn);
       
       // 클릭 이벤트 추가
-      numBtn.addEventListener("click", () => {
-        pageState.currentPage = i + 1;
+      addEvent(numBtn, "click", () => {
+        pageState.currentPage = pageNumber;
         displayData();
         this.makeNumBtn();
       });
       
       // 현재 페이지 버튼 스타일 적용
-      if (pageState.currentPage === i + 1) {
-        numBtn.style.fontWeight = "bold";
-        numBtn.style.backgroundColor = "#b4b4f1";
-        numBtn.style.borderRadius = "5px";
+      if (pageState.currentPage === pageNumber) {
+        setStyles(numBtn, CONFIG.styles.activeButton);
       }
     }
   }

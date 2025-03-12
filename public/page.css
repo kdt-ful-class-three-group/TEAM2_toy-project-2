@@ -6,6 +6,10 @@
   --point-color: #DF0047;
 }
 
+*{
+  font-family: "Noto Sans KR", sans-serif;
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   margin: 0;
@@ -26,13 +30,32 @@ h1{
   color: var(--dark-color);
 }
 
-/* form태그 스타일 */
 section#writeForm{
   width: 80%;
   max-width: 800px;
 }
 
+/* 글쓰기 버튼 */
+#writeBtn {
+  margin-bottom: 20px;
+  background: linear-gradient(97.71deg, rgba(86, 65, 142, 0.7) -48.64%, rgba(86, 65, 142, 0.2) 118.09%);
+  border-radius: 5px;
+  /* border: 2px solid;
+  border-color: none; */
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+/* [ ]버튼 hover시 */
+
+
+
+/* form태그 스타일 */
 section#writeForm form {
-  /* display: none; */
   flex-direction: column;
+  background-color: rgba(86, 65, 142, 0.05);
+  padding: 10px;
+  border-radius: 5px;
 }

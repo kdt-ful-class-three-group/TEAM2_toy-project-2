@@ -31,3 +31,8 @@ section#writeForm{
   width: 80%;
   max-width: 800px;
 }
+
+section#writeForm form {
+  /* display: none; */
+  flex-direction: column;
+}

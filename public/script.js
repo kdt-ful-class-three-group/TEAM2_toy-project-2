@@ -44,6 +44,7 @@ writeBtn.addEventListener('click', function(e) {
   if(modal.style.display==='none' || modal.style.display===''){
     const form = document.getElementsByTagName('form')[0]
     form.classList.toggle("display-none")
+    form.classList.toggle("display-flex")
   } else {
     alert('상세보기 중 글 작성이 안됩니다.')
   }

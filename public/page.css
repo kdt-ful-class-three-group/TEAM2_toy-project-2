@@ -5,6 +5,7 @@
   --light-color: #FDFCFF;
   --dark-color: #0B0029;
   --point-color: #DF0047;
+  --shadow-color: rgba(11, 0, 41,0.2);
 }
 
 *{
@@ -39,7 +40,7 @@ section#writeForm{
 
 /* 글쓰기 버튼 */
 #writeBtn {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background: linear-gradient(97.71deg, rgba(86, 65, 142, 0.7) -48.64%, rgba(86, 65, 142, 0.2) 118.09%);
   border-radius: 5px;
   /* border: 2px solid;
@@ -64,6 +65,7 @@ section#writeForm form {
   border-radius: 5px;
   gap: 10px;
   color: var(--primary-color);
+  box-shadow: 0 0 3px 3px var(--shadow-color);
 }
 form > input {
   width: 100%;

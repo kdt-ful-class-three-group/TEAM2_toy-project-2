@@ -1,5 +1,8 @@
 import {pageState} from "./Pagination.js";
 import {readModal} from "./modals.js";
+import {createElement, clearElement, appendElement, setTextContent, setAttribute} from "./util/DOMUtils.js";
+import {addEvent} from "./util/EventUtils.js";
+import {CSS_CLASSES} from "./util/DOMUtils.js";
 
 // 데이터 표시 관리 모듈
 const DataDisplay = {
@@ -25,12 +28,12 @@ const DataDisplay = {
    * @returns {HTMLElement} 생성된 DOM 요소
    */
   createItemElement: function(item, index) {
-    const div = document.createElement('div');
-    div.textContent = item.title;
-    div.setAttribute("style", "cursor:pointer");
-    div.setAttribute("id", `${index}`);
+    const div = createElement('div', {
+      id: String(index),
+      style: "cursor:pointer"
+    }, item.title);
     
-    div.addEventListener("click", () => this.handleItemClick(item, index));
+    addEvent(div, "click", () => this.handleItemClick(item, index));
     
     return div;
   },
@@ -41,7 +44,7 @@ const DataDisplay = {
    * @param {number} index - 데이터 항목의 인덱스
    */
   handleItemClick: function(item, index) {
-    if (this.elements.form.classList.contains('display-none')) {
+    if (this.elements.form.classList.contains(CSS_CLASSES.HIDDEN)) {
       readModal(item.title, item.content, index);
     } else {
       alert('글 작성 중 상세보기가 안됩니다.');
@@ -53,7 +56,7 @@ const DataDisplay = {
    */
   render: function() {
     // 리스트 초기화 (쌓임 방지)
-    this.elements.listContainer.innerHTML = "";
+    clearElement(this.elements.listContainer);
     
     // 현재 페이지 데이터 가져오기
     const showingData = this.getCurrentPageData();
@@ -61,7 +64,7 @@ const DataDisplay = {
     // 각 데이터 항목에 대한 요소 생성 및 추가
     showingData.forEach((item, index) => {
       const itemElement = this.createItemElement(item, index);
-      this.elements.listContainer.appendChild(itemElement);
+      appendElement(this.elements.listContainer, itemElement);
     });
   }
 };
@@ -72,8 +75,8 @@ const DataDisplay = {
  * 목록 개수에 따라 <div>을 만들고, 클릭하면 modal창이 보이는 로직 작성
  * <form>가 보일 땐 modal창이 안뜨고 alert으로 경고함
  */
-function displayData (){
-    DataDisplay.render();
+function displayData() {
+  DataDisplay.render();
 }
 
 export {displayData}

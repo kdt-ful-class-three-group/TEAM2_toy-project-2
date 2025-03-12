@@ -1,42 +1,60 @@
-import {displayData} from './displayData.js';
-import {pageState, makeNumBtn}from './Pagination.js';
+import { displayData } from "./displayData.js";
+import { pageState, makeNumBtn } from "./Pagination.js";
 
-
-/**
- * pagination에서 이전, 다음 버튼의 클릭 이벤트 적용
- * prevBtn : 이전 버튼
- * nextBtn : 다음버튼
- */
-function pageBtn(){
-    /**
-     * pagination에서 이전 페이지로 이동하는 함수
-     */
-    function prevBtn(){
-        if(pageState.currentPage > 1 ){
-            pageState.currentPage -- ;
-            displayData();
-            makeNumBtn()
-        }
+// 페이지 버튼 관리 모듈
+const PageButtons = {
+  elements: {
+    prevButton: document.getElementById("prevBtn"),
+    nextButton: document.getElementById("nextBtn")
+  },
+  
+  /**
+   * 페이지 버튼 초기화 및 이벤트 리스너 등록
+   */
+  init: function() {
+    this.setupEventListeners();
+  },
+  
+  /**
+   * 이벤트 리스너 설정
+   */
+  setupEventListeners: function() {
+    this.elements.prevButton.addEventListener("click", this.handlePrevClick.bind(this));
+    this.elements.nextButton.addEventListener("click", this.handleNextClick.bind(this));
+  },
+  
+  /**
+   * 이전 페이지 버튼 클릭 핸들러
+   */
+  handlePrevClick: function() {
+    if (pageState.currentPage > 1) {
+      pageState.currentPage--;
+      this.updatePageView();
     }
-
-    /**
-     * pagination에서 다음 페이지로 이동하는 함수
-     */
-    function nextBtn(){
-        if(pageState.currentPage < pageState.totalPage){
-            pageState.currentPage ++;
-            displayData();
-            makeNumBtn()
-        }
+  },
+  
+  /**
+   * 다음 페이지 버튼 클릭 핸들러
+   */
+  handleNextClick: function() {
+    if (pageState.currentPage < pageState.totalPage) {
+      pageState.currentPage++;
+      this.updatePageView();
     }
+  },
+  
+  /**
+   * 페이지 뷰 업데이트
+   */
+  updatePageView: function() {
+    displayData();
+    makeNumBtn();
+  }
+};
 
-    //각 버튼에 클릭이벤트 생성
-    document.getElementById("prevBtn").addEventListener("click", prevBtn)
-    document.getElementById("nextBtn").addEventListener("click", nextBtn)
-
+// 페이지 버튼 초기화 함수
+function pageBtn() {
+  PageButtons.init();
 }
 
-
-
-
-export {pageBtn}
+export { pageBtn };

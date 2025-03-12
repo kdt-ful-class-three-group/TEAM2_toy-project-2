@@ -86,17 +86,18 @@ delBtn.addEventListener("click", () => {
     console.log("삭제 요청할 id:", id);
 
     fetch(`http://localhost:${port}/delete`, {
-      method: "DELETE",
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({ id: String(id) })
     }).then(response => {
-      console.log('status',response.status) //404
-          alert("삭제되었습니다.")
-            closeModal()
-            // 삭제 후 전체 reload하여 다시 불러옴
-            window.location.reload()
+      if(response.status===200){
+        alert("삭제되었습니다.")
+          closeModal()
+          // 삭제 후 전체 reload하여 다시 불러옴
+          window.location.reload()
+      }
     }).catch(error => console.error('리로드 안됨',error))
 
   }})

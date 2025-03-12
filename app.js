@@ -78,7 +78,7 @@ app.post("/write", function(req,res) {
 
 //삭제 요청
 
-app.delete("/delete", function(req,res) {
+app.post("/delete", function(req,res) {
     console.log("delete 요청 받음")
     console.log("req.body:", req.body);
 
@@ -109,17 +109,13 @@ app.delete("/delete", function(req,res) {
         console.log("파일 저장 후 확인:", JSON.parse(updatedJsonData));
 
 
-        // res.redirect()
-
-
 
     } catch (error) {
         console.error("삭제 실패:", error)
         res.status(500).send("삭제 실패")
 
     }
-
-    res.redirect('/')
+    res.redirect('/');
 
 
 });

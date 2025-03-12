@@ -1,3 +1,5 @@
+import { setHtmlContent, setAttribute } from "./util/DOMUtils.js";
+
 // 모달 관리 모듈
 const Modal = {
   elements: {
@@ -21,13 +23,13 @@ const Modal = {
    */
   show: function(title, content, id) {
     // ID 설정
-    this.elements.modalContent.setAttribute("id", id);
+    setAttribute(this.elements.modalContent, "id", id);
     
     // 내용 설정
-    this.elements.modalContent.innerHTML = `
+    setHtmlContent(this.elements.modalContent, `
       <h2>${title}</h2>
       <p>${content}</p>
-    `;
+    `);
     
     // 모달 표시
     this.elements.modalBackground.style.display = "block";

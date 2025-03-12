@@ -44,68 +44,83 @@ Object.entries(staticFiles).forEach(([route, file]) => {
   });
 });
 
-app.post("/write", function (req, res) {
+// 데이터 파일 관련 헬퍼 함수
+const dataHelper = {
+  getFilePath: () => path.join(__dirname, "data.json"),
+  
+  readData: () => {
+    const jsonData = fs.readFileSync(dataHelper.getFilePath()).toString();
+    return JSON.parse(jsonData);
+  },
+  
+  writeData: (data) => {
+    fs.writeFileSync(dataHelper.getFilePath(), JSON.stringify(data, null, 2));
+    return data;
+  }
+};
+
+// POST 요청 처리를 위한 고차함수
+const postHandler = (handler) => {
+  return (req, res) => {
+    try {
+      handler(req, res, dataHelper);
+    } catch (error) {
+      console.error("요청 처리 실패:", error);
+      res.status(500).send("요청 처리 실패");
+    } finally {
+      if (!res.headersSent) {
+        res.redirect("/");
+      }
+    }
+  };
+};
+
+// 글 작성 핸들러
+app.post("/write", postHandler((req, res, helper) => {
   console.log("write 요청 받음");
-  //입력 데이터 확인하기
   console.log(req.body);
   console.log("content", req.body.content.length);
-
-  //json파일 데이터 가져오기
-  //readFileSync로 파일을 읽음 : Buffer로 나오는 값을 toString으로 문자열로 변환
-  let jsonData = fs.readFileSync(path.join(__dirname, "data.json")).toString();
-  //JSON문자열을 객체(배열)로 변환
-  let jsonArr = JSON.parse(jsonData);
-
-  //입력 데이터 가져오기
+  
+  // 데이터 읽기
+  const jsonArr = helper.readData();
+  
+  // 입력 데이터 가져오기
   const data = req.body;
-
   console.log("ID 추가된 데이터:", data);
-
-  //json파일에 데이터 추가하기
+  
+  // 데이터 추가 및 저장
   jsonArr.push(data);
-  //json파일에 데이터 저장하기
-  fs.writeFileSync(path.join(__dirname, "data.json"), JSON.stringify(jsonArr));
-
+  helper.writeData(jsonArr);
+  
   console.log("저장된 데이터", jsonArr);
-  res.redirect("/");
-});
+}));
 
-//삭제 요청
-
-app.post("/delete", function (req, res) {
+// 삭제 핸들러
+app.post("/delete", postHandler((req, res, helper) => {
   console.log("delete 요청 받음");
   console.log("req.body:", req.body);
-
+  
   const { id } = req.body;
-
   if (!id) {
     console.log("id가 없습니다.");
-    return;
+    throw new Error("ID가 없습니다");
   }
-  const filepath = path.join(__dirname, "data.json");
-
-  try {
-    //json파일 데이터 가져오기
-    const jsonData = fs.readFileSync(filepath).toString();
-    let jsonArr = JSON.parse(jsonData);
-
-    console.log("삭제 전 데이터:", jsonArr);
-
-    // 삭제 후 새로운 데이터로 삽입 -> index로 설정하여 비교
-
-    const newJsonArr = jsonArr.filter((item, index) => String(index) !== String(id));
-    console.log("삭제 후 데이터:", newJsonArr);
-
-    fs.writeFileSync("data.json", JSON.stringify(newJsonArr, null, 2));
-
-    const updatedJsonData = fs.readFileSync(filepath, "utf8");
-    console.log("파일 저장 후 확인:", JSON.parse(updatedJsonData));
-  } catch (error) {
-    console.error("삭제 실패:", error);
-    res.status(500).send("삭제 실패");
-  }
-  res.redirect("/");
-});
+  
+  // 데이터 읽기
+  const jsonArr = helper.readData();
+  console.log("삭제 전 데이터:", jsonArr);
+  
+  // 데이터 필터링 및 저장
+  const newJsonArr = jsonArr.filter((item, index) => String(index) !== String(id));
+  console.log("삭제 후 데이터:", newJsonArr);
+  
+  // 데이터 저장
+  helper.writeData(newJsonArr);
+  
+  // 저장 확인
+  const updatedData = helper.readData();
+  console.log("파일 저장 후 확인:", updatedData);
+}));
 
 app.listen(PORT, function () {
   console.log(`http://localhost:${PORT}`);

@@ -6,6 +6,7 @@
   --dark-color: #0B0029;
   --point-color: #DF0047;
   --shadow-color: rgba(11, 0, 41,0.2);
+  --list-color: rgba(86,66,143,0.3)
 }
 
 *{
@@ -101,4 +102,46 @@ form button {
   cursor: pointer;
   transition: all 0.3s;
   width: 30%;
+}
+
+/* 리스트 스타일 */
+body > div {
+  width: 80%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+body > div > p {
+  width: 100%;
+  color: var(--dark-color);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+
+div#listDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid var(--dark-color);
+  border-bottom: 2px solid var(--dark-color);
+  background-color: rgba(256, 256, 256, 0.7);
+}
+div#listDiv > div {
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--shadow-color);
+  box-sizing: border-box;
+  padding-left: 10px;
+  transition: all 0.3s;
+}
+div#listDiv > div:last-child {
+  border-bottom: none;
+}
+div#listDiv > div:hover {
+  background-color: var(--list-color);
 }

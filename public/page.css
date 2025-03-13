@@ -7,7 +7,7 @@
   --point-color: #DF0047;
   --shadow-color: rgba(11, 0, 41,0.2);
   --list-color: rgba(86,66,143,0.3);
-  --modalBackground-color: rgba(11,0,41,0.8);
+  --modalBackground-color: rgba(11,0,41,0.4);
 }
 
 *{
@@ -108,7 +108,7 @@ form button {
 }
 
 /* 리스트 스타일 */
-body > div {
+body > div:not(.modal) {
   width: 80%;
   max-width: 800px;
   display: flex;
@@ -175,11 +175,59 @@ body > div > section > div button {
 }
 
 /* 모달 */
-/* div.modal {
+div.modal {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
   height: 100%;
   background-color: var(--modalBackground-color);
-} */
+}
+
+div.readModal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 50vw;
+  height: 40%;
+  background-color: var(--light-color);
+  border-radius: 20px;
+  text-align: center;
+}
+
+div.readModal > div {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+div.readModal > div > p {
+  margin: 0;
+}
+
+span.close {
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: var(--dark-color);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+div.readModal > button#delete {
+  background: linear-gradient(97.71deg, rgba(86, 65, 142, 0.7) -48.64%, rgba(86, 65, 142, 0.2) 118.09%);
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

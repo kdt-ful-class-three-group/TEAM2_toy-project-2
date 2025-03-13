@@ -203,11 +203,13 @@ div.readModal > div {
   flex-direction: column;
   align-items: center;
   /* gap: 10px; */
+  color: var(--dark-color);
 }
 
 div.readModal > div > p {
   margin: 0;
   height: 220px;
+  width: 100%;
   overflow-y: scroll;
 }
 

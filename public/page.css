@@ -6,7 +6,8 @@
   --dark-color: #0B0029;
   --point-color: #DF0047;
   --shadow-color: rgba(11, 0, 41,0.2);
-  --list-color: rgba(86,66,143,0.3)
+  --list-color: rgba(86,66,143,0.3);
+  --modalBackground-color: rgba(11,0,41,0.8);
 }
 
 *{
@@ -17,7 +18,7 @@ body {
   font-family: "Noto Sans KR", sans-serif;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,6 +26,8 @@ body {
   gap: 20px;
   background-color: var(--background-color);
   min-width: 350px;
+  /* 모달 */
+  position: relative;
 }
 
 h1{
@@ -52,7 +55,7 @@ section#writeForm{
   cursor: pointer;
   transition: all 0.3s;
 }
-/* [ ]버튼 hover시 */
+/* 버튼 hover시 */
 
 
 
@@ -111,7 +114,7 @@ body > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 body > div > p {
@@ -138,6 +141,7 @@ div#listDiv > div {
   box-sizing: border-box;
   padding-left: 10px;
   transition: all 0.3s;
+  color: var(--dark-color);
 }
 div#listDiv > div:last-child {
   border-bottom: none;
@@ -149,8 +153,33 @@ div#listDiv > div:hover {
 }
 
 /* 목록 버튼 */
+body > div > section {
+  gap: 20px;
+}
 body > div > section button{
   border: none;
   background: none;
   cursor: pointer;
+  color: var(--dark-color);
+  font-size: 16px;
 }
+button#prevBtn:hover, button#nextBtn:hover {
+  font-weight: 500;
+}
+body > div > section > div {
+  display: flex;
+  gap: 10px;
+}
+body > div > section > div button {
+  color: var(--shadow-color);
+}
+
+/* 모달 */
+/* div.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modalBackground-color);
+} */
